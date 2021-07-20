@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import "LayoutCard";
+
+class LayoutImagem extends StatefulWidget {
+  const LayoutImagem({Key? key}) : super(key: key);
+
+  @override
+  _LayoutImagemState createState() => _LayoutImagemState();
+}
+
+class _LayoutImagemState extends State<LayoutImagem> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("CR7 é o brabo"),
+        backgroundColor: Colors.blue,
+      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverList(delegate:
+          SliverChildBuilderDelegate((BuildContext context, int index) {
+            return Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 30, top: 30),
+                    child: Card(
+                      child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LayoutCard()),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Image.asset("imagens/cr7.jpg", height: 400),
+                            Container(
+                              child: RaisedButton(
+                                child: Text(
+                                  "Clique e não aconteça nada! :)",
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                                onPressed: () {
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }))
+        ],
+      ),);
+  }
+}
